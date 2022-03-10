@@ -47,8 +47,8 @@
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
   </head>
   <body class="bg-light">
-    
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+  
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation" style="background-color: #e3f2fd;>
   <div class="container-fluid">
     <a class="navbar-brand" href="#">GSB Medecin</a>
     <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">

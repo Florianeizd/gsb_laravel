@@ -5,8 +5,8 @@
     <h3 class="border-bottom pb-2 mb-4">Liste des medecins</h3>
 
     <div class="mt-4">
-        <div class="d-flex justify-content-end mb-4">
-            <a href="#" class="btn btn-primary">Creer un medecin</a>
+        <div class="d-flex justify-content-end mb-2">
+            <a href="{{ route('medecin.create')}}" class="btn btn-primary">Creer un medecin</a>
         </div>
         <table class="table table-bordered table-hover">
     <thead>
@@ -21,18 +21,25 @@
         </tr>
     </thead>
     <tbody>
+        @foreach($medecins as $medecin)
         <tr>
-            <th scope="row">1</th>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
+            <th scope="row">{{ $medecin->id }}</th>
+            <td>{{ $medecin->nom }}</td>
+            <td>{{ $medecin->prenom }}</td>
+            <td>{{ $medecin->adresse }}</td>
+            <td>{{ $medecin->tel }}</td>
+            <td>{{ $medecin->spe }}</td>
+            <td>{{ $medecin->departement }}</td>
             <td>
-                <a href="" class="btn btn-info">Modifier</a>
+                <a href="" class="btn btn-warning" style="color: white">Modifier</a>
                 <a href="" class="btn btn-danger">Supprimer</a>
             </td>
         </tr>
+        @endforeach
+        
     </tbody>
-    </table>
+    
+    </table>{{ $medecins->links() }}
     </div>
 </div>
 @endsection
