@@ -8,6 +8,7 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class MedecinController extends Controller
 {
+
     public function index(){
 
         $medecins = Medecin::orderBy("nom", "asc")->paginate(10);
@@ -21,18 +22,25 @@ class MedecinController extends Controller
     }
 
     public function store(Request $request){
+    
 
         $request->validate([
             "nom"=>"required",
             "prenom"=>"required",
             "adresse"=>"required",
             "tel"=>"required",
-            "spe"=>"required",
             "departement"=>"required"
         ]);
 
         Medecin::create($request->all());
 
-        return back()->with("success", "Medecin ajouté avec succè !");
+        return back()->with("success", "Medecin ajouté avec succès !");
+    }
+
+    public function delete(Medecin $medecin){
+        $nom_complet = $medecin->nom ." ". $medecin->prenom;
+        $medecin->delete();
+
+        return back()->with("successDelete", "Le médecin '$nom_complet' supprimé avec succès !");
     }
 }

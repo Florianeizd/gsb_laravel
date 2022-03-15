@@ -8,6 +8,13 @@
         <div class="d-flex justify-content-end mb-2">
             <a href="{{ route('medecin.create')}}" class="btn btn-primary">Creer un medecin</a>
         </div>
+
+        @if(session()->has("successDelete"))
+        <div class="alert alert-success">
+            <h3>{{ session()->get('successDelete') }}</h3>
+        </div>
+        @endif
+
         <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -31,8 +38,16 @@
             <td>{{ $medecin->spe }}</td>
             <td>{{ $medecin->departement }}</td>
             <td>
-                <a href="" class="btn btn-warning" style="color: white">Modifier</a>
-                <a href="" class="btn btn-danger">Supprimer</a>
+                <a href="#" class="btn btn-warning" style="color: white">Modifier</a>
+                <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous vraiment supprimer ce médecin ?'))
+                {document.getElementById('form-{{$medecin->id}}').submit()}">Supprimer</a>
+
+                <form id="form-{{$medecin->id}}" action="{{route('medecin.supprimer',[
+                    'medecin'=>$medecin->id
+                ])}}" method="post"> 
+                    @csrf
+                    <input type="hidden" name="_method" value="delete">
+                </form>
             </td>
         </tr>
         @endforeach

@@ -6,6 +6,12 @@
 
     <div class="mt-4">
     
+        @if(session()->has("success"))
+            <div class="alert alert-success">
+                <h3>{{ session()->get('success') }}</h3>
+            </div>
+        @endif
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -21,27 +27,27 @@
 
             <div class="form-group">
               <label for="text">Nom du médecin</label>
-              <input type="text" class="form-control" placeholder="Entrer le nom">
+              <input type="text" class="form-control" placeholder="Entrer le nom" name="nom">
             </div>
             <div class="form-group">
               <label for="text">Prénom</label>
-              <input type="text" class="form-control" placeholder="Entrer le prénom">
+              <input type="text" class="form-control" placeholder="Entrer le prénom" name="prenom">
             </div>
             <div class="form-group">
                 <label for="text">Adresse</label>
-                <input type="text" class="form-control" placeholder="Entrer l'adresse">
+                <input type="text" class="form-control" placeholder="Entrer l'adresse" name="adresse">
             </div>
             <div class="form-group">
                 <label for="text">Téléphone</label>
-                <input type="text" class="form-control" placeholder="Entrer le numero de téléphone">
+                <input type="text" class="form-control" placeholder="Entrer le numero de téléphone" name="tel">
             </div>
             <div class="form-group">
                 <label for="text">Spécialité</label>
-                <input type="text" class="form-control" placeholder="Entrer la spécialité">
+                <input type="text" class="form-control" placeholder="Entrer la spécialité" name="spe">
             </div>
             <div class="form-group">
                 <label for="text">Département</label>
-                <input type="text" class="form-control" placeholder="Entrer le département">
+                <input type="text" class="form-control" placeholder="Entrer le département" name="departement">
             </div>
             <br>
             <a href={{ route('medecin') }} class="btn btn-danger">Annuler</a>

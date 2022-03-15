@@ -19,9 +19,13 @@ Route::get('/', function () {
 })->name("home");
 
 Route::get('/medecin', [MedecinController::class, "index"])->name("medecin");
+
 Route::get('/medecin/create', [MedecinController::class, "create"])->name("medecin.create");
 
 Route::post('/medecin/create', [MedecinController::class, "store"])->name("medecin.ajouter");
+
+Route::delete('/medecin/{medecin}', [MedecinController::class, "delete"])->name("medecin.supprimer");
+
 
 
 
