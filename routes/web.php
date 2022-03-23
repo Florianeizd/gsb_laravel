@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MedecinController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +39,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/search/', [MedecinController::class, "searchNom"])->name('search');
+Route::get('/searchD/', [MedecinController::class, "searchD"])->name('searchD');
+Route::get('/searchS/', [MedecinController::class, "searchS"])->name('searchS');
+
+Route::post('/logout', [SessionController::class, "destroy"]);
+

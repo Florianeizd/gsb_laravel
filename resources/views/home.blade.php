@@ -15,6 +15,13 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    @auth
+                    <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-6">
+                        @csrf
+                        <button class="btn btn-primary" type="submit">Se deconnecter</button>
+                    </form>
+                    @endauth
                 </div>
             </div>
         </div>

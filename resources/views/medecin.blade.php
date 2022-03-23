@@ -6,21 +6,20 @@
 
     <div class="mt-4">
         <form action="{{ route('search') }}" method="GET">
-            <input type="text" name="search" required/>
-            <button type="submit">Recherche par nom</button>
+            <input type="text" name="search" placeholder="par nom" required/>
+            <button class="btn btn-primary" type="submit">Recherche</button>
         </form>
-            {{-- @if($medecins->isNotEmpty())
-        @foreach ($medecins as $medecin)
-            <div class="medecin-list">
-                <p>{{ $medecin->title }}</p>
-                <img src="{{ $medecin->image }}">
-            </div>
-        @endforeach
-         @else 
-        <div>
-            <h2>No medecins found</h2>
-        </div>
-         @endif --}}
+        <br>
+        <form action="{{ route('searchD') }}" method="GET">
+            <input type="text" name="search" placeholder="par departement" required/>
+            <button class="btn btn-primary" type="submit">Recherche</button>
+        </form>
+        <br>
+        <form action="{{ route('searchS') }}" method="GET">
+            <input type="text" name="search" placeholder="par spécialité" required/>
+            <button class="btn btn-primary" type="submit">Recherche</button>
+        </form>
+        
         @auth
         <div class="d-flex justify-content-end mb-2">
             <a href="{{ route('medecin.create')}}" class="btn btn-primary">Creer un medecin</a>

@@ -80,6 +80,34 @@ class MedecinController extends Controller
         // Search in the title and body columns from the medecins table
         $medecins = Medecin::query()
             ->where('nom', 'LIKE', "%{$search}%")
+            // ->orWhere('departement', 'LIKE', "%{$search}%")
+            // ->orWhere('spe', 'LIKE', "%{$search}%")
+            ->get();
+        
+        // Return the search view with the resluts compacted
+        return view('medecin', compact('medecins'));
+    }
+
+    public function searchD(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the medecins table
+        $medecins = Medecin::query()
+            ->where('departement', 'LIKE', "%{$search}%")
+            ->get();
+        
+        // Return the search view with the resluts compacted
+        return view('medecin', compact('medecins'));
+    }
+
+    public function searchS(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the medecins table
+        $medecins = Medecin::query()
+            ->where('spe', 'LIKE', "%{$search}%")
             ->get();
         
         // Return the search view with the resluts compacted

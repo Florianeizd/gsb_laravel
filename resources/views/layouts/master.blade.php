@@ -64,7 +64,11 @@
           <a class="nav-link active" href="{{ route('medecin') }}">Liste des medecins</a>
         </li>
         <li class="nav-item">
+          @auth
+          <a class="nav-link active" href="{{route('login')}}">Bienvenue, {{ auth()->user()->name }} !</a>
+          @else
           <a class="nav-link active" href="{{route('login')}}">Connexion</a>
+          @endauth
         </li>
       </ul>
     </div>
