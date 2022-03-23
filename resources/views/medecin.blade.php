@@ -22,7 +22,7 @@
         
         @auth
         <div class="d-flex justify-content-end mb-2">
-            <a href="{{ route('medecin.create')}}" class="btn btn-primary">Creer un medecin</a>
+            <a href="{{ route('medecin.create')}}" class="btn btn-primary">Créer un medecin</a>
         </div>
         @endauth
         @if(session()->has("successDelete"))
