@@ -64,13 +64,9 @@
           <a class="nav-link active" href="{{ route('medecin') }}">Liste des medecins</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Profile</a>
+          <a class="nav-link active" href="{{route('login')}}">Connexion</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

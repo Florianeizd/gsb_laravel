@@ -5,10 +5,27 @@
     <h3 class="border-bottom pb-2 mb-4">Liste des medecins</h3>
 
     <div class="mt-4">
+        <form action="{{ route('search') }}" method="GET">
+            <input type="text" name="search" required/>
+            <button type="submit">Recherche par nom</button>
+        </form>
+            {{-- @if($medecins->isNotEmpty())
+        @foreach ($medecins as $medecin)
+            <div class="medecin-list">
+                <p>{{ $medecin->title }}</p>
+                <img src="{{ $medecin->image }}">
+            </div>
+        @endforeach
+         @else 
+        <div>
+            <h2>No medecins found</h2>
+        </div>
+         @endif --}}
+        @auth
         <div class="d-flex justify-content-end mb-2">
             <a href="{{ route('medecin.create')}}" class="btn btn-primary">Creer un medecin</a>
         </div>
-
+        @endauth
         @if(session()->has("successDelete"))
         <div class="alert alert-success">
             <h3>{{ session()->get('successDelete') }}</h3>
@@ -38,7 +55,7 @@
             <td>{{ $medecin->spe }}</td>
             <td>{{ $medecin->departement }}</td>
             <td>
-                <a href="#" class="btn btn-warning" style="color: white">Modifier</a>
+                <a href="{{ route('medecin.edit', ['medecin'=>$medecin->id])}}" class="btn btn-warning" style="color: white">Modifier</a>
                 <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous vraiment supprimer ce médecin ?'))
                 {document.getElementById('form-{{$medecin->id}}').submit()}">Supprimer</a>
 
@@ -54,7 +71,10 @@
         
     </tbody>
     
-    </table>{{ $medecins->links() }}
-    </div>
-</div>
+    </table>
+       
+</div> 
+
+{{-- {{ $medecins->links() }} --}}
+
 @endsection
